@@ -1,0 +1,115 @@
+[
+    {
+        "card": {
+            "suit": 1,
+            "rank": 1
+        },
+        "word": "date"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 2
+        },
+        "word": "dan"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 3
+        },
+        "word": "dam"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 4
+        },
+        "word": "door"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 5
+        },
+        "word": "deal"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 6
+        },
+        "word": "dish"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 7
+        },
+        "word": "duck"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 8
+        },
+        "word": "dove"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 9
+        },
+        "word": "deep"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 10
+        },
+        "word": "dice"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 11
+        },
+        "word": "dimond"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 12
+        },
+        "word": "ding"
+    },
+    {
+        "card": {
+            "suit": 1,
+            "rank": 13
+        },
+        "word": "dean"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 1
+        },
+        "word": "hat"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 2
+        },
+        "word": "hen"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 3
+        },
+        "word": "ham"
+    }
+
+]
