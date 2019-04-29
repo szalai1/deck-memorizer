@@ -81,14 +81,14 @@
             "suit": 1,
             "rank": 12
         },
-        "word": "ding"
+        "word": "dean"
     },
     {
         "card": {
             "suit": 1,
             "rank": 13
         },
-        "word": "dean"
+        "word": "ding"
     },
     {
         "card": {
@@ -110,6 +110,78 @@
             "rank": 3
         },
         "word": "ham"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 4
+        },
+        "word": "hair"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 5
+        },
+        "word": "hail"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 6
+        },
+        "word": "hash"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 7
+        },
+        "word": "hack"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 8
+        },
+        "word": "hoof"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 9
+        },
+        "word": "hool"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 10
+        },
+        "word": "house"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 11
+        },
+        "word": "heart"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 12
+        },
+        "word": "diana"
+    },
+    {
+        "card": {
+            "suit": 0,
+            "rank": 13
+        },
+        "word": "hindge"
     }
+
+
 
 ]
