@@ -22,9 +22,9 @@ type Game struct {
 	score int
 }
 
-func NewGame() Game {
+func NewSingleSuitGame(s deck.Suit) Game {
 	return Game{
-		from:  deck.NewSingleSuitDeck(deck.SuitDiamond),
+		from:  deck.NewSingleSuitDeck(s),
 		to:    deck.NewEmptyDeck(),
 		score: 0,
 	}
