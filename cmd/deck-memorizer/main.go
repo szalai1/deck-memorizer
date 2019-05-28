@@ -1,34 +1,13 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"log"
 	"os"
 	"os/exec"
 
+	"github.com/jessevdk/go-flags"
 	"github.com/szalai1/deck-memorizer/pkg/deck"
 )
-
-type CardAssociation struct {
-	Card deck.Card `json:"card"`
-	Word string    `json:"word"`
-}
-
-type Game struct {
-	from  deck.Deck
-	to    deck.Deck
-	score int
-}
-
-func NewSingleSuitGame(s deck.Suit) Game {
-	return Game{
-		from:  deck.NewSingleSuitDeck(s),
-		to:    deck.NewEmptyDeck(),
-		score: 0,
-	}
-}
 
 func clearTerminal() {
 	cmd := exec.Command("clear") //Linux example, its tested
@@ -73,28 +52,22 @@ func singleSuitGameWithHelp(suit deck.Suit, mapping map[deck.Card]string) {
 	}
 }
 
+var parser = flags.NewNamedParser("deck-memorizer", flags.Default)
+
 func main() {
-	var cardWordPairs []CardAssociation
-	file, err := ioutil.ReadFile("mapping.json")
+	_, err := parser.Parse()
 	if err != nil {
-		log.Fatal(err)
+		return
 	}
-	err = json.Unmarshal([]byte(file), &cardWordPairs)
-	if err != nil {
-		log.Fatal(err)
-	}
-	cardWordMapping := map[deck.Card]string{}
-	for _, p := range cardWordPairs {
-		cardWordMapping[p.Card] = p.Word
-	}
-	singleSuitGameWithHelp(deck.SuitDiamond, cardWordMapping)
-	/*heart := deck.NewSingleSuitDeck(deck.SuitHeart)
-	otherDeck := deck.NewEmptyDeck()
-	heart.Shuffle()
-	for c, err := heart.Draw(); err == nil; c, err = heart.Draw() {
-		fmt.Println(c)
-		otherDeck.PushCardBack(c)
-		//fmt.Scanf("\n")
-	}
+	/*
+		singleSuitGameWithHelp(deck.SuitDiamond, cardWordMapping)
+		heart := deck.NewSingleSuitDeck(deck.SuitHeart)
+		otherDeck := deck.NewEmptyDeck()
+		heart.Shuffle()
+		for c, err := heart.Draw(); err == nil; c, err = heart.Draw() {
+			fmt.Println(c)
+			otherDeck.PushCardBack(c)
+			//fmt.Scanf("\n")
+		}
 	*/
 }
