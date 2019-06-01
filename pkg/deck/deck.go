@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"math/rand"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -71,6 +73,51 @@ func NewSingleSuitDeck(s Suit) Deck {
 		d.cards = append(d.cards, card)
 	}
 	return d
+}
+
+func NewCardFromString(input string) (*Card, error) {
+	parts := strings.Split(input, "-")
+	if len(parts) != 2 {
+		return nil, errors.New("card format is invalid")
+	}
+	parts[0] = strings.ToUpper(parts[0])
+	var card Card
+	switch parts[0] {
+	case "H":
+		card.Suit = SuitHeart
+	case "D":
+		card.Suit = SuitDiamond
+	case "S":
+		card.Suit = SuitSpade
+	case "C":
+		card.Suit = SuitClub
+	default:
+		return nil, fmt.Errorf("could not recognize %s as suit", parts[0])
+	}
+	switch parts[1] {
+	case "A":
+		card.Rank = RankAce
+		return &card, nil
+	case "J":
+		card.Rank = RankJack
+		return &card, nil
+	case "Q":
+		card.Rank = RankQueen
+		return &card, nil
+	case "K":
+		card.Rank = RankKing
+		return &card, nil
+	default:
+		num, err := strconv.Atoi(parts[1])
+		if err != nil {
+			return nil, fmt.Errorf("could not recognize %s as rank", parts[1])
+		}
+		if num < 2 || num > 10 {
+			return nil, fmt.Errorf("%s is not a valid rank", parts[1])
+		}
+		card.Rank = Rank(num)
+		return &card, nil
+	}
 }
 
 func (c *Card) String() string {
