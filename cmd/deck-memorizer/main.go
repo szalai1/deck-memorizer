@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 
@@ -37,7 +38,11 @@ func singleSuitGameWithHelp(suit deck.Suit, mapping map[deck.Card]string) {
 	deck1 := deck.NewSingleSuitDeck(suit)
 	deck1.Shuffle()
 	otherDeck := deck.NewEmptyDeck()
+	if deck1 == nil {
+		return
+	}
 	for c, err := deck1.Draw(); err == nil; c, err = deck1.Draw() {
+		log.Println(c, err)
 		help, _ := mapping[*c]
 		fmt.Println(c.String(), help)
 		fmt.Scanf("\n")

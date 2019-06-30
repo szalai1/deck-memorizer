@@ -35,8 +35,11 @@ type CardAssociation struct {
 
 func (g *Game) Play() {
 	// show
-	for c, err := g.from.Draw(); err != nil; c, err = g.from.Draw() {
-		time.Sleep(g.learnTime)
+	log.Println("Play", g.from.Size())
+
+	for c, err := g.from.Draw(); err == nil; c, err = g.from.Draw() {
+		//time.Sleep(g.learnTime)
+		log.Println(c.String())
 		if ass, ok := g.associationsMap[*c]; g.config.ShowAssociations && ok {
 			fmt.Printf("%v %s", c, ass)
 		} else {
@@ -81,7 +84,7 @@ func (config *playOpts) NewGame(s selector) Game {
 		recalled:        deck.NewEmptyDeck(),
 		associationsMap: readAssociations(config.AssociationsMapPath),
 	}
-	for c, err := fullDeck.Draw(); err != nil; c, err = fullDeck.Draw() {
+	for c, err := fullDeck.Draw(); err == nil; c, err = fullDeck.Draw() {
 		if s(*c) {
 			g.from.PushCardFront(c)
 		}
@@ -91,7 +94,7 @@ func (config *playOpts) NewGame(s selector) Game {
 }
 
 func (playOpts *playOpts) Execute(args []string) error {
-	selector := falseSelector
+	selector := trueSelector
 	for _, s := range playOpts.CardSelectors {
 		newSelector, err := newSelectorFromString(s)
 		if err != nil {
@@ -105,6 +108,10 @@ func (playOpts *playOpts) Execute(args []string) error {
 }
 
 func falseSelector(c deck.Card) bool {
+	return false
+}
+
+func trueSelector(c deck.Card) bool {
 	return false
 }
 
@@ -142,7 +149,7 @@ func readAssociations(path string) map[deck.Card]string {
 	err = json.Unmarshal([]byte(file), &cardWordPairs)
 	if err != nil {
 		log.Print(err)
-		return cardWordPairs
+		return nil
 	}
 	cardWordMapping := map[deck.Card]string{}
 	for _, p := range cardWordPairs {
